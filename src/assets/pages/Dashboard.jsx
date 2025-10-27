@@ -192,7 +192,7 @@ const Dashboard = () => {
                 <p className="text-sm text-gray-600 dark:text-gray-300 max-w-xs text-center">
                   Enter a room code to join an existing coding session.
                 </p>
-                <div className="flex gap-2 w-full mt-2">
+                <div className="flex gap-3 lg:w-full  mt-2 ">
                   <input
                     type="text"
                     placeholder="Enter room code..."

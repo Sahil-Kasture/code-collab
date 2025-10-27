@@ -5,7 +5,7 @@ import API from '../api/Api'
 import LoaderOverlay from '../componets/Loader'
 
 function ProtextedRoutes({ children }) {
-  const { user } = useAuth();
+  const { user , setUser} = useAuth();
   const [isVerified, setIsVerified] = useState(null); 
   useEffect(() => {
     const verifyToken = async () => {
@@ -13,6 +13,7 @@ function ProtextedRoutes({ children }) {
         const token = window.localStorage.getItem("token");
         const res = await API.post("/verify", { token });
         setIsVerified(res.data.success);
+        setUser(window.localStorage.getItem("username"))
       } catch (err) {
         setIsVerified(false);
       }
