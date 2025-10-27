@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+/* Dark mode support */
+.dark {
+  color-scheme: dark;
+}
+
+/* Scrollbar utilities (Tailwind v4-compatible) */
+/* Usage:
+   <div class="scrollbar scrollbar-thin" style="--sb-thumb: #9ca3af; --sb-track: transparent"></div>
+   You can also use any Tailwind color by assigning its hex via inline style or a custom class.
+*/
+.scrollbar {
+  scrollbar-width: auto;
+  scrollbar-color: var(--sb-thumb, #9ca3af) var(--sb-track, transparent);
+}
+
+.scrollbar-thin {
+  scrollbar-width: thin;
+}
+
+.scrollbar-none {
+  scrollbar-width: none;
+}
+
+.scrollbar::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+  background-color: var(--sb-track, transparent);
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+  background-color: var(--sb-thumb, #9ca3af);
+  border-radius: 0.5rem;
+  border: 3px solid var(--sb-track, transparent);
+}
+
+.scrollbar-thumb-rounded::-webkit-scrollbar-thumb {
+  border-radius: 9999px;
+}
+
+.scrollbar-corner::-webkit-scrollbar-corner {
+  background-color: var(--sb-track, transparent);
+}
+
+.remote-selection {
+  background-color: rgba(255, 0, 0, 0.3);
+}
+
+/* Custom scrollbar styles for Chrome, Edge, Safari */
+::-webkit-scrollbar-button {
+    display: none;
+}
+
+/* Optional: style the scrollbar itself */
+::-webkit-scrollbar {
+    width: 8px;
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: #94a3b8;
+    border-radius: 8px;
+}
+
+/* Dark mode scrollbar */
+.dark ::-webkit-scrollbar-thumb {
+    background: #4b5563;
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+    background: #6b7280;
+}
