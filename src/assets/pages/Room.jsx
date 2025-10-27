@@ -75,7 +75,7 @@ const Room = () => {
       ydocRef.current = null
       bindingRef.current = null
       awarenessRef.current = null
-      window.location.href = '/dashboard'
+      navigate('/dashboard')
     })
     socket.on('roomNameChanged', ({newName}) => {
       setRoomName(newName)

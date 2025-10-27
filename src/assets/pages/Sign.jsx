@@ -1,5 +1,5 @@
 import React ,{useState,useEffect} from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import socket from '../scripts/sockets.js'
 import { useAuth } from '../context/JoinContext.jsx'
 import API from '../api/Api.js'
@@ -8,6 +8,7 @@ import ErrorPage from '../componets/Error.jsx'
 import {GoogleLogin} from '@react-oauth/google'
 
 export default function SignUpPage() {
+  const navigate = useNavigate();
   const [username,setName]=useState('')
   const [email,setEmail]=useState('')
   const [password,setPassword]=useState('')
@@ -42,7 +43,7 @@ export default function SignUpPage() {
             password
         })
         setLoading(false)
-        window.location.href="/login"
+        navigate("/login")
     }catch(err){
       setLoading(false)
       setError(true)
@@ -62,7 +63,7 @@ export default function SignUpPage() {
       socket.auth = { token: apiResponse.data.token };
       socket.connect();
       setLoading(false)
-      window.location.href = "/dashboard";
+      navigate("/dashboard");
     }catch(err){
       setLoading(false)
       setError(true)

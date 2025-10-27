@@ -1,5 +1,5 @@
 import React ,{useState,useEffect} from "react";
-import { Link } from "react-router-dom";
+import { Link , useNavigate} from "react-router-dom";
 import API from "../api/Api.js";
 import LoaderOverlay from '../componets/Loader.jsx'
 import ErrorPage from '../componets/Error.jsx'
@@ -13,6 +13,7 @@ const LoginPage = () => {
   const [usernameOrEmail, setUsernameOrEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordVisible, setPasswordVisible] = useState(false);
+  const navigate = useNavigate();
   
   async function handleLogin() {
     if (usernameOrEmail === "" || password === "") {
@@ -30,10 +31,10 @@ const LoginPage = () => {
       window.localStorage.setItem("username", response.data.user.username);
       socket.auth = { token: response.data.token };
       socket.connect();
-      window.location.href = "/dashboard";
+      
       setLoading(false);
+      navigate("/dashboard");
     } catch (err) {
-      console.log(err.response)
       setLoading(false);
       setErrorMessage(err.response?.data?.msg || "Failed to login");
       setError(true);
@@ -56,7 +57,7 @@ const LoginPage = () => {
       socket.auth = { token: apiResponse.data.token };
       socket.connect();
       setLoading(false)
-      window.location.href = "/dashboard";
+      navigate("/dashboard");
     }catch(err){
       setLoading(false)
       setError(true)
