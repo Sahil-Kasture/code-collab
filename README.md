@@ -19,7 +19,7 @@ Lightweight Vite + React realtime code editor (frontend). Backend is API-based a
 
 2. Run dev server
    npm run dev
-   - Open: http://localhost:5173
+   - Open: http://localhost:5000
 
 3. Build / Preview production
    npm run build
